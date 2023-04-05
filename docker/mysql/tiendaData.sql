@@ -20,17 +20,4 @@ INSERT INTO productos (nombre, descripcion, precio, imagen, stock, create_date) 
 ('D&D Essentials: Heroes de las Tierras Caidas', 'Este reglamento esencial de Dungeons & Dragons contiene detalles sobre las clases clérigo, guerrero, mago y pícaro, junto con reglas para personajes eladrines, enanos, elfos, humanos y medianos.  Además, proporciona una amplia variedad de dotes, armas, armaduras y equipo aventurero, así como un resumen básico de las reglas de juego.', '24.04', ' ', '321', '1995-09-12' ),   ('Pajarracos', 'Pajarracos es un juego de estrategia, de 3 a 6 jugadores, apto para todos los miembros de la familia. ¡Consigue más frutas que tus rivales y sé el ganador de este divertido juego!', '8.00', ' ', '97', '2013-09-22' ),  
 ('24h', '24h es un juego de múltiples escenarios donde podrás participar en diferentes aventuras. Además, gracias a las dos pantallas que trae el juego, se pueden jugar simultáneamente dos partidas diferentes a la vez.', '24.00', ' ', '24', '2014-02-24' );
 
-
-INSERT INTO usuarios (nombre, email, direccion, ciudad, codigo_postal) VALUES
-('María', 'maria.garcia@example.com', 'Calle de la Paz 15', 'Madrid', '28003'),
-('David', 'david.fernandez@example.com', 'Avenida del Mediterráneo 56', 'Valencia', '46010'),
-('Ana', 'ana.lopez@example.com', 'Calle del Generalísimo 23', 'Logroño', '26002'),
-('José', 'jose.martinez@example.com', 'Calle de la Catedral 7', 'Sevilla', '41001'),
-('Sara', 'sara.perez@example.com', 'Calle de la Virgen 21', 'Zaragoza', '50005'),
-('Juan', 'juan.ruiz@example.com', 'Plaza de España 14', 'Córdoba', '14001'),
-('Elena', 'elena.sanchez@example.com', 'Calle del Sol 10', 'Valladolid', '47004'),
-('Carlos', 'carlos.gomez@example.com', 'Avenida de la Constitución 30', 'Granada', '18001'),
-('Laura', 'laura.torres@example.com', 'Calle de la Palma 13', 'Barcelona', '08003'),
-('Miguel', 'miguel.garcia@example.com', 'Calle del Prado 5', 'Murcia', '30002');
-
-
+SELECT * FROM productos;

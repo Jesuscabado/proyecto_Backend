@@ -8,7 +8,7 @@ services:
       MYSQL_ROOT_PASSWORD: mi-contraseña
       MYSQL_DATABASE: mitienda
     ports:
-      - 3306:3306
+      - 3315:3306
     volumes:
       - "./docker/mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf"
       - "./docker/mysql/tiendaSimple.sql:/docker-entrypoint-initdb.d/1tiendaSimple.sql"
@@ -24,7 +24,7 @@ services:
     environment:
       MONGO_INITDB_DATABASE: juegos_mesa
     ports:
-      - 27017:27017
+      - 27018:27017
     volumes:
       - ~/juegosData/mongo:/data/db
     networks:
@@ -32,7 +32,7 @@ services:
 
   node:
     build: .
-    container_name: node
+    container_name: node-juegos_mesa
     restart: always
     ports:
       - 3000:3000
