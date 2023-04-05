@@ -1,0 +1,50 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.6
+    container_name: mysql-juegos_mesa
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mi-contraseña
+      MYSQL_DATABASE: mitienda
+    ports:
+      - 3306:3306
+    volumes:
+      - "./docker/mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf"
+      - "./docker/mysql/tiendaSimple.sql:/docker-entrypoint-initdb.d/1tiendaSimple.sql"
+      - "./docker/mysql/tiendaData.sql:/docker-entrypoint-initdb.d/2tiendaData.sql"
+      - ~/juegosData/mysql:/var/lib/mysql
+    networks:
+      - juegos_mesa
+  
+  mongo:
+    image: mongo:5
+    container_name: mongo-juegos_mesa
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: juegos_mesa
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/juegosData/mongo:/data/db
+    networks:
+      - juegos_mesa
+
+  node:
+    build: .
+    container_name: node
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+        - mysql
+        - mongo
+    networks:
+        - juegos_mesa
+    volumes:
+        - ./:/usr/src/app
+        - exclude:/usr/src/app/node_modules/
+volumes:
+  exclude:
+networks:
+  juegos_mesa: 
