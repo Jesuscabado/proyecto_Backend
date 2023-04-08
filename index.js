@@ -2,7 +2,6 @@ import express from 'express'
 import router from './routes/views/router.js'
 import passport from './config/passport.js'
 import session from 'express-session'
-import router from './routes/views/router.js'
 const app = express()
 
 app.use(express.static('public'));

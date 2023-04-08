@@ -4,7 +4,7 @@ import Juego from "../models/juego.js";
 export const getAll = async (req, res) => {
     try {
         let juegos = await Juego.findAll({
-        attributes: ["idproducto", "nombre", "descripcion", "precio","imagen", "stock",  "create_date"],
+        attributes: ["idproducto", "nombre", "descripcion", "precio","imagen", "stock", "create_date"],
     });
     return [0, juegos];
     } catch (error) {
@@ -16,7 +16,7 @@ export const getAll = async (req, res) => {
   const getById = async (req, res) => {
     try {
         let juego = await Juego.findOne({
-        attributes: ["idjuego", "nombre", "descripcion", "precio","imagen", "stock",  "create_date"],
+        attributes: ["idjuego", "nombre", "descripcion", "precio","imagen", "stock", "create_date"],
         where: { idjuego: req.params.id }
     });
     return [0, juego];
@@ -25,7 +25,7 @@ export const getAll = async (req, res) => {
     }
 };
 
-const update = async (data, idjuego) => {
+const update = async (data, idjuego) => {//
    try {
     let juego = await Juego.update(data, {
         where: {

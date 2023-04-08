@@ -2,12 +2,16 @@ import { Router } from 'express';
 import juegoController from '../../controllers/juegoController.js';
 
 const router = Router();
+//una ruta que muestre todos los juegos
 
-router.get('/', (req, res) => {
+router.get('/juegos', (req, res) => {
     juegoController.getAll(req, res);
 });
+/* router.get('/', (req, res) => {
+    juegoController.getAll(req, res);
+}); */
 
-router.get('/juego/:id', (req, res) => {
+router.get('/juegos/:id', (req, res) => {
     juegoController.getById(req, res);
 });
 
