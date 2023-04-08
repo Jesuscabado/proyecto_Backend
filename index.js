@@ -21,11 +21,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.set("view engine", "pug");
 
-app.use("/", routerView);
-
-/* app.get ('/', (req, res) => {
-    res.send('Mesa y risa')
-}) */
+app.use("/", routerView); 
 
 app.listen(3000, () => {
     console.log("server is running on port 3000");
