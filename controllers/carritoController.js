@@ -1,6 +1,6 @@
 
 
-const getAll = async () => {
+/* const getAll = async () => {
    try{
         const pedidos = await pedido.findAll()({
             attributes:["idpedido","idusuario","estado","fecha"],
@@ -43,5 +43,5 @@ const addProducto = async (req,res) => {
     if(!pedido){
         pedido = await createPedido(req,res);
     }
-}
+} */
 

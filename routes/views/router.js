@@ -1,20 +1,16 @@
 import { Router } from "express";
-import JuegoRouter from "./juego.js";
+import productoRouter from "./producto.js";
 
 
 const router = Router();
 
-router.use("/juegos", JuegoRouter);
-router.get("/juegos", (req, res) => {
-    res.render("juegos");
+router.use("/productos", productoRouter);
+/* router.use("/", authRouter);
+router.use("/", (req, res) => {
+    const auth = req.user;
+    res.render("index", {auth});
 });
-router.get("/juegos/:id", (req, res) => {
-    res.render("juego");
-});
-
-router.get("/", (req, res) => {
-    res.render("index");
-});
+ */
 export default router;
 
 
