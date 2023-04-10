@@ -1,20 +1,14 @@
 import mongoose from "../config/mongoose.js";
 import bcrypt from "bcrypt";
-
 const userSchema = new mongoose.Schema({
-    username:{
+    password: {
         type: String,
         required: true,
-        unique: true
-    }, 
+    },
     email: {
         type: String,
         rquired: true,
         unique: true
-    },
-    password: {
-        type: String,
-        required: true,
     },
     role: {
         type: String,
