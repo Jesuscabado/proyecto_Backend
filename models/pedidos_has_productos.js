@@ -27,3 +27,4 @@ const Pedidos_has_productos = connection.define("pedidos_has_productos", {
 });
 
 export default Pedidos_has_productos;
+

@@ -1,4 +1,5 @@
 import productoController from "./productoController.js";
+
 /* import pedidoController from "./pedido/pedidoController.js"; */
 
 const getAll = async (req, res) => {
@@ -11,11 +12,13 @@ const getAll = async (req, res) => {
             message: error.message || "Error al obtener los productos"
         });
     }
+
 };
 
 const getById = async (req, res) => {
     let id = req.params.id;
     let result = await productoController.getById(id);
+
     if(result[0] == 0){
         let producto = result[1];
         if(!producto) {
@@ -29,9 +32,11 @@ const getById = async (req, res) => {
         let error = result[1];
         res.status(500).send({
             message: error.message || "Error al obtener el producto"
+
         });
     }
 };
+
 
 /* const createForm = async (req, res) => {
     res.render("producto/new");
@@ -95,12 +100,14 @@ const deletes = async (req, res) => {
     res.redirect("/productos");
 } */
 
+
 export default {
     getAll,
-    getById,
+    getById
     /* createForm,
     create,
     updateForm,
     update,
     deletes */
-}
+};
+

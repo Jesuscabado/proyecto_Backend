@@ -43,3 +43,4 @@ const Producto = connection.define("productos", {
 });
 
 export default Producto;
+
