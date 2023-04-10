@@ -1,22 +1,27 @@
 import express from 'express'
-import router from './routes/views/router.js'
-import passport from './config/passport.js'
-import session from 'express-session'
+
+import routerView from "./routes/views/router.js"
+import express_session from "express-session" // sirve para guardar la sesión del usuario
+import passport from  "./config/passport.js" // sirve para autenticar al usuario
+
 const app = express()
 
-app.use(express.static('public'));
-app.use(session({
-    secret: 'secret',
-    resave: false,
-    saveUninitialized: false
+app.use(express.static("public"));
+app.use(express_session({
+    secret: "zacatrus", //palabra secreta para cifrar la sesion
+    resave: false, 
+    saveUninitialized: false 
 }));
-/* app.get ('/', (req, res) => {
-    res.send('Mesa y risa')
-}) */
+
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+app.set("view engine", "pug");
+
+app.use("/", routerView); 
 
 app.set('view engine', 'pug')
 

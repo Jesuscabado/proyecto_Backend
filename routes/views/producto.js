@@ -1,23 +1,32 @@
-import { Router } from 'express';
-import productoController from '../../controllers/producto/productoViewController.js';
+import { Router} from "express";
+import { isAuthorized,isAdmin } from "../../middlewares/auth.js";
+import productoController from "../../controllers/producto/productoViewController.js";
 
 const router = Router();
-//una ruta que muestre todos los juegos
 
-router.get('/', (req, res) => {
-    productoController.getAll(req, res);
+router.get("/", isAuthorized, (req,res) => { 
+    productoController.getAll(req,res);
 });
 
 router.get("/producto/:id", (req, res) => {
     productoController.getById(req,res);
 });
-/* router.get('/juego/:id', (req, res) => {
-    productoController.getById(req, res);
+/* 
+router.get("/new", isAdmin, (req, res) => {
+    productoController.createForm(req,res);
 });
 
-router.get("/new", (req, res) => {
-    productoController.create(req, res);
+router.get("/edit/:id", isAdmin, (req,res) =>{
+    productoController.updateForm(req,res);
 });
- */
 
-export default router;
+router.post("/edit/:id", isAuthorized, (req, res) => {
+    productoController.update(req,res);
+});
+
+router.post("/delete/:id",isAuthorized, (req, res) => {
+    productoController.deletes(req,res);
+}); */
+
+export default router; 
+

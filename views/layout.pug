@@ -1,19 +1,21 @@
 html 
-    head   
-     
-        title Juegos De Mesa
-    body 
-        header 
-           nav 
-                    ul 
-                        li 
-                            a(href="/") Home
-                        li 
-                            a(href="/about") About
-                        li 
-                            a(href="/contact") Contact
-                        li 
-                            a(href="/productos") Juegos 
-        main
-            block content 
-        footer
+ head 
+    title Mesa y Risa
+ body 
+    header 
+        nav
+        //-a(href="/")
+          img(src="image/logoPetanca.png",class="logo", alt="logotipo de la liga de petanca")
+        ul
+          //-a(href="/") 
+            li Inicio
+          //-a(href="/players") 
+            li Jugadores 
+          a(href="/login") 
+            li Login
+          a(href="/register") 
+            li Registrarse
+    main 
+        block content 
+    footer   
+

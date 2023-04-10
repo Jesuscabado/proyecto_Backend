@@ -7,7 +7,6 @@ const Pedidos_has_productos = connection.define("pedidos_has_productos", {
         primaryKey: true,
         allowNull: false,
         unsigned: true,
-
     },
     idproducto: {
         type: Sequelize.INTEGER,
@@ -18,13 +17,14 @@ const Pedidos_has_productos = connection.define("pedidos_has_productos", {
     cantidad: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unsigned: true,
+        unsigned: true
     },
-    
+
 },
-    {
-        freezeTableName: true,
-        timestamps: false,
-    });
+{
+    freezeTableName: true,
+    timestamps: false
+});
 
 export default Pedidos_has_productos;
+

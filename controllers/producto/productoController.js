@@ -1,6 +1,7 @@
 import Producto from "../../models/producto.js";
 
 
+
 const getAll = async () => {
     try {
         let productos = await Producto.findAll({
@@ -11,6 +12,8 @@ const getAll = async () => {
         return [1, error];
     }
 };
+
+
 
 
   const getById = async (id) => {
@@ -24,6 +27,7 @@ const getAll = async () => {
         return [1, error];
     }
 };
+
 
 /* const update = async (data, idproducto) => {//
    try {
@@ -39,22 +43,25 @@ const getAll = async () => {
     }
 };
 
-const borrar = async (idproducto) => {
-    try {
+const deletes = async (idproducto) => {
+    try{
         let producto = await Producto.destroy({
             where: {
-                idproducto: idproducto,
-            },
+                idproducto: idproducto
+            }
         });
         return [0, producto];
-    } catch (error) {
+    }catch(error){
         return [1, error];
     }
-}; */
+} */
+
 
 export default {
     getAll,
     getById,
-   /*  update,
-    borrar, */
-};
+    /* create,
+    update,
+    deletes */
+}
+
