@@ -24,10 +24,6 @@ const Producto = connection.define("productos", {
         allowNull: false,
         unsigned: true
     },
-    image: {
-        type: Sequelize.STRING(255),
-        allowNull: false
-    },
     stock: {
         type: Sequelize.INTEGER,
         allowNull: false,

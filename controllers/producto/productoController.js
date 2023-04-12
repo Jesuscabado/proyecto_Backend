@@ -33,12 +33,13 @@ const getById = async (id) => {
     }
 };
 
-/* const create = async (data) => {
+const create = async (data) => {
     try{
         let producto = await Producto.create(data);
         return [0, producto];
-    }catch(error){
-        return [1, error];
+    } catch (error) {
+        throw new Error(error);
+        //return [1, error];
     }
 };
 
@@ -66,12 +67,12 @@ const deletes = async (idproducto) => {
     }catch(error){
         return [1, error];
     }
-} */
+} 
 
 export default {
     getAll,
     getById,
-    /* create,
+    create,
     update,
-    deletes */
+    deletes
 }

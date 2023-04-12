@@ -3,5 +3,12 @@ block content
     h1= producto.nombre
     h2=producto.descripcion
     h3=producto.precio
-    
+        br
+        br
+        form(action=`/productos/edit/${producto.idproducto}`, method="get")
+            input(type="submit",class="btn edit" value="Editar") 
+        form(action=`/productos/delete/${producto.idproducto}`, method="post")
+            input(type="submit",class="btn delete" value="Eliminar") 
+            input(type="hidden", name="password" value="mi-contraseña")
+
     a(href="/productos" class="btn") Volver
