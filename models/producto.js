@@ -24,10 +24,6 @@ const Producto = connection.define("productos", {
         allowNull: false,
         unsigned: true
     },
-    image: {
-        type: Sequelize.STRING(255),
-        allowNull: false
-    },
     stock: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -36,8 +32,11 @@ const Producto = connection.define("productos", {
         type: Sequelize.DATE,
         allowNull: false
     },
-}, 
-{
+    imagen: {
+        type: String,
+        required: false
+    }, 
+
     freezeTableName: true,
     timestamps: false
 });

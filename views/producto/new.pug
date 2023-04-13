@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+    h2 Subir Juego 
+
+    form(action="/productos" method="POST") 
+        label(for="nombre") Nombre 
+        input(type="text" name="nombre" id="nombre", required)
+        br
+        label(for="descripcion") Descripcion 
+        input(type="text" name="descripcion" id="descripcion", required)
+        br
+        label(for="precio") Precio 
+        input(type="number" name="precio" id="precio", required)
+        br
+        label(for="stock") Stock
+        input(type="number" name="stock" id="stock", required)
+        br
+        label(for="create_date") Fecha de lanzamiento
+        input(type="date" name="create_date" id="create_date", required)
+        br
+        input(type="submit", value="Crear")
+
+    a(href="/productos") 
+        button Volver 
+
+        

@@ -38,9 +38,12 @@ const getById = async (req, res) => {
 };
 
 
-/* const createForm = async (req, res) => {
-    res.render("producto/new");
-}; // esta funcion se encarga de renderizar la vista create
+const createForm = async (req, res) => {
+    let error = req.query.error;
+    let result = await productoController.getAll();
+    res.render("producto/new", {error: error});
+};
+
 
 
 const create = async (req, res) => {
@@ -48,38 +51,46 @@ const create = async (req, res) => {
         nombre: req.body.nombre, 
         descripcion: req.body.descripcion, 
         precio: req.body.precio,
-        imagen : req.body.imagen,
         stock : req.body.stock,
         create_date : req.body.create_date
-    }
+        }
     let result = await productoController.create(data);
 
-    if(result[0] == 0){
+        if(result[0] == 0){ //Si no hay error al crear el producto lo redireccionamos a la lista de productos
         res.redirect("/productos");
-    }else {
-        let error = result[1];
-        let errorUri = encodeURIComponent(error.message);
-        res.redirect(`/productos?error=${errorUri}`);
+        }else { //Si hay error al crear el producto lo redireccionamos al formulario de creación de productos
+        let error = result[1]; 
+        let errorUri = encodeURIComponent(error.message); 
+        res.redirect(`/productos/new?error=${errorUri}`); 
     }
 }
 
 const updateForm = async (req, res) => {
     let idproducto = req.params.id;
     let result = await productoController.getById(idproducto);
-    let results = await pedidoController.getAll();
-
-    const producto = result[1];
-    const pedidos = results[1];
-
-    res.render("producto/edit", {producto: producto, pedidos: pedidos});
-};
+    if(result[0] == 0){
+        let producto = result[1];
+        if(!producto) {
+            res.status(404).send({
+                message: `No se encontró el producto con id ${idproducto}.`
+            });
+        }else{
+            let error = req.query.error;
+            res.render("producto/edit", {producto: producto, error: error});
+        }
+    }else {
+        let error = result[1];
+        res.status(500).send({
+            message: error.message || "Error al obtener el producto"
+    });
+    }
+}
 
 const update = async (req, res) => {
     let data = {
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         precio: req.body.precio,
-        imagen : req.body.imagen,
         stock : req.body.stock,
         create_date : req.body.create_date
     }
@@ -98,16 +109,16 @@ const deletes = async (req, res) => {
     let idproducto = req.params.id;
     let result = await productoController.deletes(idproducto);
     res.redirect("/productos");
-} */
+} 
 
 
 export default {
     getAll,
-    getById
-    /* createForm,
+    getById,
+    createForm,
     create,
     updateForm,
     update,
-    deletes */
-};
+    deletes
+}
 
