@@ -2,7 +2,8 @@
 import connection from "../config/sequelize.js";
 import Sequelize from "sequelize";
 import Pedidos_has_productos from "./pedidos_has_productos.js";
-
+import Producto from "./producto.js";
+import Usuario from "./usuario.js";
 const Pedido = connection.define("pedidos", {
 
     idpedido: {
@@ -38,10 +39,25 @@ const Pedido = connection.define("pedidos", {
     timestamps: false
 });
 
-Pedido.belongsTo(Pedidos_has_productos, {
+Pedido.belongsTo(Usuario, {
+    foreignKey: "email_user"
+});
+
+Pedido.hasMany(Pedidos_has_productos, {
     foreignKey: "idpedido"
 });
-Pedido.belongsToMany(Producto, {
+
+Pedidos_has_productos.belongsTo(Pedido, {
+    foreignKey: "idpedido"
+});
+
+Pedidos_has_productos.belongsTo(Producto, {
+    foreignKey: "idproducto"
+});
+
+
+
+/* Pedido.belongsToMany(Producto, {
     through: "pedidos_has_productos",
     timestamps: false, 
     foreignKey: "idproducto"
@@ -53,6 +69,6 @@ Producto.belongsToMany(Pedido, {
     foreignKey: "idpedido"
 
 });
-
+ */
 
 export default Pedido;
