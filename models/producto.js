@@ -32,10 +32,14 @@ const Producto = connection.define("productos", {
         type: Sequelize.DATE,
         allowNull: false
     },
-}, 
-{
+    imagen: {
+        type: String,
+        required: false
+    }, 
+
     freezeTableName: true,
     timestamps: false
 });
 
 export default Producto;
+

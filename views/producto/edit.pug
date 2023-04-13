@@ -2,6 +2,7 @@ extends ../layout
 
 block content 
     h2 Editar juego
+
     form(action=`/productos/edit/${producto.idproducto}` method="POST", enctype="multipart/form-data") 
         label(for="nombre") Nombre 
         input(type="text" name="nombre" id="nombre", value=producto.nombre)
@@ -15,8 +16,8 @@ block content
         label(for="stock") Stock
         input(type="number" name="stock" id="stock",value=producto.stock)
         br
-        label(for="imagen") Imagen
-        input(type="file" name="imagen" id="imagen")
+        label(for="photo") Imagen
+        input(type="file" name="photo" id="photo")
         br
         input(type="submit", value="Guardar")
     a(href="/productos") 

@@ -5,6 +5,7 @@ block content
     h1 Juegos
     table 
         thead 
+            th Imagen
             th Nombre 
             th Descripcion 
             th precio 
@@ -12,6 +13,8 @@ block content
         tbody 
             each producto in productos
                 tr 
+                    td 
+                        img(src=`/uploads/${producto.nombre}.jpeg`, alt=`${producto.nombre}`)
                     td
                         a(href= `/productos/producto/${producto.idproducto}`)=producto.nombre 
                     td=producto.descripcion 

@@ -1,8 +1,10 @@
+
 import connection from "../config/sequelize.js";
 import Sequelize from "sequelize";
 import Pedidos_has_productos from "./pedidos_has_productos.js";
 
 const Pedido = connection.define("pedidos", {
+
     idpedido: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -11,7 +13,9 @@ const Pedido = connection.define("pedidos", {
         unique: true
     },
     email_user: {
+
         type: Sequelize.STRING(45),
+
         allowNull: false,
         unique: true
     },
@@ -22,6 +26,7 @@ const Pedido = connection.define("pedidos", {
     estado: {
         type: Sequelize.STRING(45),
         allowNull: false,
+
         defaultValue: 'pendiente',
         validate: {
           isIn: [['pendiente', 'preparado', 'enviado', 'cancelado']]
@@ -41,10 +46,13 @@ Pedido.belongsToMany(Producto, {
     timestamps: false, 
     foreignKey: "idproducto"
 });
+
 Producto.belongsToMany(Pedido, {
     through: "pedidos_has_productos",
     timestamps: false,
     foreignKey: "idpedido"
+
 });
+
 
 export default Pedido;

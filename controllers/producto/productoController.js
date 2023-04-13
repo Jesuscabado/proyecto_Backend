@@ -11,14 +11,17 @@ const getAll = async () => {
     }
 };
 
-  const getById = async (id) => {
-    try {
+
+
+
+    const getById = async (id) => {
+    try  {
         let producto = await Producto.findByPk(id, {
         attributes: ["idproducto", "nombre", "descripcion", "precio", "stock", "create_date"],
         
          });
         return [0, producto];
-    } catch (error) {
+    }  catch  (error)  {
         return [1, error];
     }
 };
@@ -37,10 +40,13 @@ const update = async (data, idproducto) => {//
     let producto = await Producto.update(data, {
         where: {
              idproducto: idproducto,
-            },
-        });
-
-        return [0, producto];
+        },
+    });
+    if (req.file) {
+        console.log("file",req.file.path.splith("public")[1]);
+        producto.imagen = req.file.path.splith("public")[1];
+    }
+    return [0, producto];
     } catch (error) {
         return [1, error];
     }
@@ -67,3 +73,5 @@ export default {
     update,
     deletes
 }
+
+
