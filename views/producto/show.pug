@@ -1,8 +1,10 @@
 extends ../layout
 block content 
+    link(rel="stylesheet", href="/css/style.css")
     h1= producto.nombre
     h2=producto.descripcion
     h3=producto.precio
+    h4= (producto.stock) ? "En stock" : "Sin stock"
     img(src=`/uploads/${producto.nombre}.jpg`, alt=`${producto.nombre}`)
     br
     br
