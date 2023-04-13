@@ -14,7 +14,7 @@ block content
             each producto in productos
                 tr 
                     td 
-                        img(src=`/uploads/${producto.nombre}.jpeg`, alt=`${producto.nombre}`)
+                        img(src=`/uploads/${producto.nombre}.jpg`, alt=`${producto.nombre}`)
                     td
                         a(href= `/productos/producto/${producto.idproducto}`)=producto.nombre 
                     td=producto.descripcion 
