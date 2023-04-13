@@ -14,11 +14,11 @@ const getAll = async () => {
 
 
 
+
     const getById = async (id) => {
     try  {
         let producto = await Producto.findByPk(id, {
         attributes: ["idproducto", "nombre", "descripcion", "precio", "stock", "create_date"],
-        
          });
         return [0, producto];
     }  catch  (error)  {
@@ -66,6 +66,7 @@ const deletes = async (idproducto) => {
 } 
 
 
+
 export default {
     getAll,
     getById,
@@ -73,5 +74,6 @@ export default {
     update,
     deletes
 }
+
 
 
