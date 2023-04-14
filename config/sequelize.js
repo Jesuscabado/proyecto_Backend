@@ -3,7 +3,10 @@ import { Sequelize } from "sequelize";
 const sequelize = new Sequelize('mitienda', 'root', 'mi-contraseña', {
     host: 'mysql-juegos_mesa',
     port: 3306,
-    dialect: 'mysql'
+    dialect: 'mysql',
+    define: {
+        timestamps: false
+    },
   });
   sequelize.authenticate()
   .then(function(err) {
