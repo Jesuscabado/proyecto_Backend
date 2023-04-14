@@ -10,14 +10,6 @@ const getAll = async () => {
         return [1, error];
     }
 };
-
-
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 759a9797ced484e89799c0aac05908f61b773918
     const getById = async (id) => {
     try  {
         let producto = await Producto.findByPk(id, {
