@@ -45,6 +45,7 @@ const createForm = async (req, res) => {
 };
 
 
+
 const create = async (req, res) => {
     let data = {
         nombre: req.body.nombre, 
@@ -110,6 +111,7 @@ const deletes = async (req, res) => {
     res.redirect("/productos");
 } 
 
+
 export default {
     getAll,
     getById,
@@ -119,3 +121,4 @@ export default {
     update,
     deletes
 }
+

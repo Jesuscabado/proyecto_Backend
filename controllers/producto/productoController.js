@@ -12,11 +12,16 @@ const getAll = async () => {
 };
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 759a9797ced484e89799c0aac05908f61b773918
     const getById = async (id) => {
     try  {
         let producto = await Producto.findByPk(id, {
         attributes: ["idproducto", "nombre", "descripcion", "precio", "stock", "create_date"],
-        
          });
         return [0, producto];
     }  catch  (error)  {
@@ -64,6 +69,7 @@ const deletes = async (idproducto) => {
 } 
 
 
+
 export default {
     getAll,
     getById,
@@ -71,5 +77,6 @@ export default {
     update,
     deletes
 }
+
 
 
