@@ -3,19 +3,18 @@ html
     title Mesa y Risa
  body 
     header 
-        nav
+      nav
         //-a(href="/")
-          img(src="image/logoPetanca.png",class="logo", alt="logotipo de la liga de petanca")
-        ul
-          a(href="/") 
-            li Inicio
-          a(href="/productos") 
-            li Juegos 
-          a(href="/login") 
-            li Login
-          a(href="/register") 
-            li Registrarse
+          img(src="image/logoProvisional.png",class="logonav", alt="logotipo de la tienda")
+        .menu
+          a(href="/") Inicio
+          a(href="/productos") Juegos 
+          a(href="/login") Login
+          a(href="/register") Registrarse
+          a(href="/logout") Cerrar sesión
     main 
         block content 
     footer   
+
+
 

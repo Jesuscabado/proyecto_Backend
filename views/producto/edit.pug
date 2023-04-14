@@ -1,23 +1,30 @@
 extends ../layout
 
 block content 
+    link(rel="stylesheet", href="/css/style.css")
     h2 Editar juego
 
     form(action=`/productos/edit/${producto.idproducto}` method="POST", enctype="multipart/form-data") 
         label(for="nombre") Nombre 
+        br
         input(type="text" name="nombre" id="nombre", value=producto.nombre)
         br
         label(for="descripcion") Descripcion 
+        br
         input(type="text" name="descripcion" id="descripcion",value=producto.descripcion)
         br
         label(for="precio") Precio 
+        br
         input(type="number" name="precio" id="precio",value=producto.precio)
         br
         label(for="stock") Stock
+        br
         input(type="number" name="stock" id="stock",value=producto.stock)
+        br
         br
         label(for="photo") Imagen
         input(type="file" name="photo" id="photo")
+        br
         br
         input(type="submit", value="Guardar")
     a(href="/productos") 

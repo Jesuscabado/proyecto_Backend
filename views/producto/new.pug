@@ -1,7 +1,8 @@
 extends ../layout
 
 block content
-    h2 Subir Juego 
+    link(rel="stylesheet", href="/css/style.css")
+    h2 Nuevo Juego 
 
     form(action="/productos" method="POST") 
         label(for="nombre") Nombre 
@@ -23,5 +24,3 @@ block content
 
     a(href="/productos") 
         button Volver 
-
-        

@@ -12,8 +12,6 @@ const getAll = async () => {
 };
 
 
-
-
     const getById = async (id) => {
     try  {
         let producto = await Producto.findByPk(id, {

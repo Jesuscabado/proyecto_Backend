@@ -5,11 +5,11 @@ import productoController from "../../controllers/producto/productoViewControlle
 
 const router = Router();
 
-router.get("/", isAuthorized, (req,res) => { 
+router.get("/", (req,res) => { 
     productoController.getAll(req,res);
 });
 
-router.get("/producto/:id", (req, res) => {
+router.get("/producto/:id",isAuthorized, (req, res) => {
     productoController.getById(req,res);
 });
  
@@ -17,7 +17,7 @@ router.get("/new", isAdmin, (req,res) => {
     productoController.createForm(req,res);
 });
 
-router.post("/new", isAdmin,(req,res)=> {
+router.post("/", isAdmin,(req,res)=> {
     productoController.create(req,res);
 });
 
