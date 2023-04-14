@@ -20,6 +20,34 @@ import Productos from "../../models/producto.js";
         return [1, error];
     }
 }; 
+const getByUserEmail = async (email) => {
+    try {
+        const pedido = await Pedido.findOne({
+            where: {
+                email_user: email
+            },
+            attributes: ["idpedido", "email_user","date","estado", ],
+        });
+        return [0, pedido];
+    } catch (error) {
+        return [1, error];
+    }
+};
+
+const pendienteByUserEmail = async (email) => {
+    try {
+        const pedido = await Pedido.findOne({
+            where: {
+                email_user: email,
+                estado: "pendiente"
+            },
+            attributes: ["idpedido", "email_user","date","estado", ],
+        });
+        return [0, pedido];
+    } catch (error) {
+        return [1, error];
+    }
+};
 
 const getById = async (id) => {
     try {
@@ -41,12 +69,12 @@ const getById = async (id) => {
 
 
     
-const createPedido = async (id) => {
+const createPedido = async (email) => {
     try {
         let pedido = await Pedido.create({
-            idusuario: id,
+            email_user: email,
             estado: "pendiente",
-            fecha: new Date()
+            date: new Date()
         });
         return  [0, pedido];
     } catch (error) {
@@ -56,13 +84,25 @@ const createPedido = async (id) => {
     
  
 
-const addProducto = async () => {
+const addProducto = async (email, idproducto, cantidad) => {
     try {
-        let pedido = await Pedido.create({
-            idusuario: id,
-            estado: "pendiente",
-            fecha: new Date()
+        let pedido = await pendienteByUserEmail(email);
+        if (pedido[0] == 1) {
+            return pedido;
+        }
+        pedido = pedido[1];
+        if (!pedido) {
+            pedido = await createPedido(email);
+            pedido = pedido[1];
+        }
+        console.log(pedido);
+        Pedidos_has_productos.create({
+            idpedido: pedido.idpedido,
+            idproducto: idproducto,
+            cantidad: cantidad
         });
+    
+
         return  [0, pedido];
     } catch (error) {
         return [1, error];
@@ -85,7 +125,19 @@ const updatePedido = async (data, idpedido) => {
 
     
 
-const deleteProducto = async (idpedido) => {
+/* Pedido.belongsToMany(Producto, {
+    through: "pedidos_has_productos",
+    timestamps: false, 
+    foreignKey: "idproducto"
+});
+
+Producto.belongsToMany(Pedido, {
+    through: "pedidos_has_productos",
+    timestamps: false,
+    foreignKey: "idpedido"
+
+});
+ */const deleteProducto = async (idpedido) => {
     try {
         let pedido = await Pedido.destroy({
             where: {
@@ -107,5 +159,7 @@ export default {
     getById,
     addProducto,
     updatePedido,
-    deleteProducto
+    deleteProducto,
+    getByUserEmail,
+    pendienteByUserEmail
 }

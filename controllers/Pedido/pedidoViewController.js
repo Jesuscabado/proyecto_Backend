@@ -43,20 +43,9 @@ const createPedido = async (req, res) => {
 
 const addProducto = async (req, res) => {
     let userEmail = req.user.email;
-    let pedido = await pedidoController.addProducto(userEmail);
-    if (!pedido) {
-        pedido = await createPedido(req, res);
-    }
-    let idproducto = req.query.idproducto;
+    let idproducto = req.params.productid;
     let cantidad = req.query.cantidad;
-    let idpedido = pedido.idpedido;
-    let producto = await pedidoController.addProducto(idproducto);
-    if (!producto) {
-        return res.status(404).send({
-            message: "Producto no encontrado"
-        });
-    }
-    let result = await pedidoController.addProducto(idpedido, idproducto, cantidad);
+    let result = await pedidoController.addProducto(userEmail, idproducto, cantidad);
     if (result[0] == 0) {
         res.redirect("/pedido");
     } else {
@@ -74,7 +63,7 @@ const pedidoView = async (req, res) => {
     if(result[0] == 0){
         res.render("pedido", {pedidos: result[1]});
     }else {
-        let error = result[1];
+        let error = result[1]; 
       res.status(500).send({
         message: error.message || "Error al obtener los productos del pedido"
       });

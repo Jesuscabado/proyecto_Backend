@@ -1,9 +1,7 @@
 
 import connection from "../config/sequelize.js";
 import Sequelize from "sequelize";
-import Pedidos_has_productos from "./pedidos_has_productos.js";
-import Producto from "./producto.js";
-import Usuario from "./usuario.js";
+import User from "./user.js";
 const Pedido = connection.define("pedidos", {
 
     idpedido: {
@@ -18,15 +16,15 @@ const Pedido = connection.define("pedidos", {
         type: Sequelize.STRING(45),
 
         allowNull: false,
-        unique: true
+        unique: false
     },
     date: {
-        type: Sequelize.DATETIME,
+        type: Sequelize.DATE,
         allowNull: false
     },
     estado: {
         type: Sequelize.STRING(45),
-        allowNull: false,
+        allowNull: false, 
 
         defaultValue: 'pendiente',
         validate: {
@@ -39,36 +37,7 @@ const Pedido = connection.define("pedidos", {
     timestamps: false
 });
 
-Pedido.belongsTo(Usuario, {
-    foreignKey: "email_user"
-});
-
-Pedido.hasMany(Pedidos_has_productos, {
-    foreignKey: "idpedido"
-});
-
-Pedidos_has_productos.belongsTo(Pedido, {
-    foreignKey: "idpedido"
-});
-
-Pedidos_has_productos.belongsTo(Producto, {
-    foreignKey: "idproducto"
-});
 
 
-
-/* Pedido.belongsToMany(Producto, {
-    through: "pedidos_has_productos",
-    timestamps: false, 
-    foreignKey: "idproducto"
-});
-
-Producto.belongsToMany(Pedido, {
-    through: "pedidos_has_productos",
-    timestamps: false,
-    foreignKey: "idpedido"
-
-});
- */
 
 export default Pedido;
