@@ -4,7 +4,7 @@ block content
     link(rel="stylesheet", href="/css/style.css")
     h2 Nuevo Juego 
 
-    form(action="/productos" method="POST") 
+    form(action="/productos" method="POST", enctype="multipart/form-data") 
         label(for="nombre") Nombre 
         input(type="text" name="nombre" id="nombre", required)
         br
@@ -19,6 +19,10 @@ block content
         br
         label(for="create_date") Fecha de lanzamiento
         input(type="date" name="create_date" id="create_date", required)
+        br
+        label(for="photo") Imagen
+        input(type="file" name="photo" id="photo")
+        br
         br
         input(type="submit", value="Crear")
 
