@@ -38,7 +38,19 @@ Pedido.hasMany(Pedidos_has_productos, {
     foreignKey: "idpedido"
 });
 
+Producto.hasMany(Pedidos_has_productos, {
+    foreignKey: "idproducto"
+});
 
+Producto.belongsTo(Pedido, {
+    through: Pedidos_has_productos,
+    foreignKey: "idproducto"
+});
+
+Pedido.belongsTo(Producto, {
+    through: Pedidos_has_productos,
+    foreignKey: "idpedido"
+});
 
 
 export default Pedidos_has_productos;

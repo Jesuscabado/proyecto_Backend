@@ -14,6 +14,7 @@ const getAll = async (req, res) => {
 
 const getById = async (req, res) => {
     let id = req.params.id;
+    console.log("pedidoconid", id);
     let result = await pedidoController.getById(id);
 
     if(result[0] == 0){

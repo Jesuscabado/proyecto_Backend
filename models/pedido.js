@@ -1,7 +1,6 @@
 
 import connection from "../config/sequelize.js";
 import Sequelize from "sequelize";
-import User from "./user.js";
 const Pedido = connection.define("pedidos", {
 
     idpedido: {
@@ -36,6 +35,9 @@ const Pedido = connection.define("pedidos", {
     freezeTableName: true,
     timestamps: false
 });
+
+
+
 
 
 

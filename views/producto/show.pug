@@ -3,7 +3,7 @@ block content
     h1= producto.nombre
     h2=producto.descripcion
     h3=producto.precio
-    img(src=`/uploads/${producto.nombre}.jpeg`, alt=`${producto.nombre}`)
+    img(src=`/uploads/${producto.nombre}.jpg`, alt=`${producto.nombre}`)
     br
     br
     form(action=`/productos/edit/${producto.idproducto}`, method="get")

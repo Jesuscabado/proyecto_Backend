@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+
+    h1 Pedidos
+    table 
+        thead 
+            th idpedido
+            th date
+            th email_user
+            th estado
+            th total
+        tbody 
+            each pedido in pedidos
+                tr 
+                    td=pedido.idpedido
+                    td=pedido.date
+                    td=pedido.email_user
+                    td=pedido.estado
+                    td=pedido.total
+    br
+    br
+    a(href="/productos") Volver a listado de productos

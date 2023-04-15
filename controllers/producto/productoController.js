@@ -1,8 +1,77 @@
-import Pedido from "../../models/pedido.js";
-import Productos from "../../models/producto.js";
+/* import Pedido from "../../models/pedido.js"; */
+import Producto from "../../models/producto.js";
+
+const getAll = async () => {
+    try {
+        let productos = await Producto.findAll({
+             attributes: ["idproducto", "nombre", "descripcion", "precio", "stock", "create_date"],
+        });
+        return [0, productos];
+    } catch (error) {
+        return [1, error];
+    }
+};
+    const getById = async (id) => {
+    try  {
+        let producto = await Producto.findByPk(id, {
+        attributes: ["idproducto", "nombre", "descripcion", "precio", "stock", "create_date"],
+         });
+        return [0, producto];
+    }  catch  (error)  {
+        return [1, error];
+    }
+};
+
+const create = async (data) => {
+    try{
+        let producto = await Producto.create(data);
+        return [0, producto];
+    } catch (error) {
+        throw new Error(error);
+        //return [1, error];
+    }
+};
+const update = async (data, idproducto) => {//
+   try {
+    let producto = await Producto.update(data, {
+        where: {
+             idproducto: idproducto,
+        },
+    });
+    if (req.file) {
+        console.log("file",req.file.path.splith("public")[1]);
+        producto.imagen = req.file.path.splith("public")[1];
+    }
+    return [0, producto];
+    } catch (error) {
+        return [1, error];
+    }
+};
+
+const deletes = async (idproducto) => {
+    try{
+        let producto = await Producto.destroy({
+            where: {
+                idproducto: idproducto
+            }
+        });
+        return [0, producto];
+    }catch(error){
+        return [1, error];
+    }
+} 
 
 
-  const getAll = async () => {
+
+export default {
+    getAll,
+    getById,
+    create,
+    update,
+    deletes
+}
+
+/*   const getAll = async () => {
     try {
         const pedidos = await Pedido.findAll({
             attributes: ["idpedido", "idusuario", "estado", "fecha"],
@@ -65,7 +134,7 @@ const updatePedido = async (data, idpedido) => {
 
     
 
-const deleteProducto = async () => {
+const deleteProducto = async (idpedido) => {
     try {
         let pedido = await Pedido.destroy({
             where: {
@@ -76,7 +145,7 @@ const deleteProducto = async () => {
     } catch (error) {
         return [1, error];
     }
-};
+}; 
 
 
  
@@ -88,4 +157,4 @@ export default {
     updatePedido,
     deleteProducto
 }
-
+*/

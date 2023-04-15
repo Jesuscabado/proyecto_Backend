@@ -17,7 +17,7 @@ router.get("/new", isAdmin, (req,res) => {
     productoController.createForm(req,res);
 });
 
-router.post("/new", isAdmin,(req,res)=> {
+router.post("/new", [isAdmin, upload.single("photo")], (req,res)=> {
     productoController.create(req,res);
 });
 
@@ -25,7 +25,7 @@ router.get("/edit/:id", isAdmin, (req,res) =>{
     productoController.updateForm(req,res);
 });
 
-router.post("/edit/:id", [isAuthorized, upload.single("photo")], (req, res) => {
+router.post("/edit/:id", [isAdmin, upload.single("photo")], (req, res) => {
     productoController.update(req,res);
 });
 

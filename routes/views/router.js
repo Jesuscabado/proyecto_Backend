@@ -5,7 +5,7 @@ import { isAuthorized } from "../../middlewares/auth.js";
 import pedidoRouter from "./pedido.js";
 const router = Router();
 
-router.use("/pedidos", pedidoRouter);
+router.use("/pedido", pedidoRouter);
 router.use("/productos", productoRouter);
 router.use("/", authRouter);
 router.use("/", isAuthorized);
