@@ -41,8 +41,9 @@ Pedido.hasMany(Pedidos_has_productos, {
 Producto.hasMany(Pedidos_has_productos, {
     foreignKey: "idproducto"
 });
-
-Producto.belongsTo(Pedido, {
+//otra forma de hacerlo https://sequelize.org/docs/v6/advanced-association-concepts/advanced-many-to-many/
+ 
+/* Producto.belongsTo(Pedido, {
     through: Pedidos_has_productos,
     foreignKey: "idproducto"
 });
@@ -50,7 +51,7 @@ Producto.belongsTo(Pedido, {
 Pedido.belongsTo(Producto, {
     through: Pedidos_has_productos,
     foreignKey: "idpedido"
-});
+}); */
 
 
 export default Pedidos_has_productos;

@@ -9,15 +9,16 @@ block content
             th date
             th email_user
             th estado
-            th total
+            th acciones 
         tbody 
             each pedido in pedidos
                 tr 
-                    td=pedido.idpedido
-                    td=pedido.date
-                    td=pedido.email_user
-                    td=pedido.estado
-                    td=pedido.total
+                    td #{pedido.idpedido}
+                    td #{pedido.date}
+                    td #{pedido.email_user}
+                    td #{pedido.estado}
+                    td 
+                      a(href="/pedidos/" + pedido.idpedido) Ver
     br
     br
     a(href="/productos") Volver a listado de productos

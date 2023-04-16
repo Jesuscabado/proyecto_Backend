@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  h1 Pedido #{pedido.idpedido}
+  p Fecha: #{pedido.date}
+  p Cliente: #{pedido.email_user}
+  p Estado: #{pedido.estado}
+
+  h2 Productos
+  table 
+    thead 
+      th idproducto
+      th nombre
+      th precio
+      th cantidad
+    tbody 
+      each item in pedido.pedidos_has_productos
+        tr 
+          td #{item.idproducto}
+          td #{item.producto.nombre}
+          td #{item.producto.precio}
+          td #{item.cantidad}

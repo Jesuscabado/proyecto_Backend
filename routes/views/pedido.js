@@ -9,16 +9,10 @@ router.get("/", isAuthorized,isAdmin , (req, res) => {
 });
 //ruta para agregar producto al carrito
 
-/*  router.get("/pedido",isAuthorized, (req, res) => {
-    pedidoController.getById(req, res);
-}); */
 
-
-router.get("/pedido/:id", isAuthorized, (req, res) => {
+router.get("/:id", isAuthorized, (req, res) => {
     pedidoController.getById(req, res);
 });
- 
-router.get 
 
 export default router;
 

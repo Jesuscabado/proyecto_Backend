@@ -8,7 +8,6 @@ const Pedido = connection.define("pedidos", {
         primaryKey: true,
         autoIncrement: true,
         unsigned: true,
-        unique: true
     },
     email_user: {
 

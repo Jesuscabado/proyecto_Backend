@@ -7,13 +7,13 @@ import Productos from "../../models/producto.js";
     try {
         const pedidos = await Pedido.findAll({
             attributes: ["idpedido", "email_user","date","estado", ],
-            include: [
+            /* include: [
                 {model: Productos,
                 attributes: ["nombre", "precio"],
                 as: "productos"},
                 {model:Pedidos_has_productos,
                 attributes: ["cantidad"],
-                as: "pedidos_has_productos"}]
+                as: "pedidos_has_productos"}] */
         });
         return [0, pedidos];
     } catch (error) {
@@ -22,7 +22,7 @@ import Productos from "../../models/producto.js";
 }; 
 const getByUserEmail = async (email) => {
     try {
-        const pedido = await Pedido.findOne({
+        const pedido = await Pedido.findAll({
             where: {
                 email_user: email
             },
@@ -36,7 +36,7 @@ const getByUserEmail = async (email) => {
 
 const pendienteByUserEmail = async (email) => {
     try {
-        const pedido = await Pedido.findOne({
+        const pedido = await Pedido.findAll({
             where: {
                 email_user: email,
                 estado: "pendiente"
@@ -54,12 +54,14 @@ const getById = async (id) => {
         const pedido = await Pedido.findByPk(id,{
             attributes: ["idpedido", "email_user","date","estado", ],
             include: [
-                {model: Productos,
-                attributes: ["nombre", "precio"],
-                as: "productos"},
                 {model:Pedidos_has_productos,
-                attributes: ["cantidad"],
-                as: "pedidos_has_productos"}]
+                attributes: ["cantidad", "idproducto"],
+                include: [
+                    {model: Productos,
+                    attributes: ["nombre", "precio"],}
+                ],
+            }
+                ]
         });
         return [0, pedido];
     } catch (error) {

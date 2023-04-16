@@ -1,22 +1,27 @@
 import pedidoController from "./pedidoController.js";
+import { isAdmin } from "../../middlewares/auth.js";
 
 const getAll = async (req, res) => {
     let result = await pedidoController.getAll();
+    /* if (isAdmin(req)) { //isAdmin(req) no funciona mirar middleware 
+    let result = await pedidoController.getAll();
+    } else {
+        let result = await pedidoController.getAllByUser(req.user.email);
+    } */
     if(result[0] == 0){
-        res.render("pedido", {pedidos: result[1]});
+        res.render("pedido/list", {pedidos: result[1]});
     }else {
         let error = result[1];
       res.status(500).send({
         message: error.message || "Error al obtener los productos del pedido"
-      });
+      }); 
     }
 };
 
 const getById = async (req, res) => {
     let id = req.params.id;
-    console.log("pedidoconid", id);
     let result = await pedidoController.getById(id);
-
+    console.log(JSON.stringify(result));
     if(result[0] == 0){
         let pedido = result[1];
         if(!pedido){
@@ -24,7 +29,7 @@ const getById = async (req, res) => {
                 message: `Pedido no encontrado con id: ${id}`
             });
         }else{
-            res.render("pedido/carrito", {pedido: pedido});
+            res.render("pedido/show", {pedido: pedido});
         }
     }else {
         let error = result[1];
