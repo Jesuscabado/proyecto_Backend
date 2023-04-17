@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+  .menu a {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    width: 100%;
+  }
+  
+  .menu a:hover {
+    background-color: #f5c045;
+    color: #fff;
+  }
+
+/* Estilo para la cabecera de la página */
+h1 {
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  
+  /* Estilo para el formulario de login */
+  form {
+    display: block;
+    margin: 0 auto;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  label {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    display: block;
+    text-align: left;
+  }
+  
+  input[type="email"],
+  input[type="text"],
+  input[type="password"] {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 1em;
+  }
+  
+  input[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    padding: 0.5em 1em;
+    background-color: #f5c045;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  input[type="submit"]:active {
+    background-color: #1e7e34;
+  }
+  

@@ -20,7 +20,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         enum: ["admin", "user"]
-    }
+    },
+    avatar: {
+        type: String,
+        required: false,
+    },
 });
 
 userSchema.methods.verifyPassword = function (password) {

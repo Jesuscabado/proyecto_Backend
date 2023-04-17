@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.menu a {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  width: 100%;
+}
+
+.menu a:hover {
+  background-color: #f5c045;
+  color: #fff;
+}
+
+/* Estilo para la cabecera de la página */
+h1 {
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  
+  /* Estilo para la imagen del producto */
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Estilo para la descripción del producto */
+  h2 {
+    text-align: center;
+    margin: 0.5em;
+    font-size: 1.5em;
+  }
+  
+  /* Estilo para el precio del producto */
+  h3 {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+  }
+  
+  /* Estilo para los botones de "Editar" y "Eliminar" */
+  form {
+    display: inline-block;
+    margin: 1em;
+  }
+  
+  input[type="submit"] {
+    display: block;
+    text-align: center;
+    background-color: #f5c045;
+    color: white;
+    padding: 0.5em;
+    text-decoration: none;
+    margin-bottom: 1em;
+    border: none;
+    cursor: pointer;
+  }
+  
+  input[type="submit"].edit {
+    background-color: #2196F3;
+  }
+  
+  input[type="submit"].delete {
+    background-color: #F44336;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  input[type="submit"]:active {
+    background-color: #1e7e34;
+  }
+
+  footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+  

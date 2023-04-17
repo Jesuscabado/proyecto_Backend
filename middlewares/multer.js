@@ -7,11 +7,19 @@ const storage = multer.diskStorage({
         cb(null, path.join(dirname, "public", "uploads"));
     }
     , filename: function (req, file, cb) {
-        const nombre = req.body.nombre 
+        const nombre = req.body.nombre; 
         cb(null, nombre + path.extname(file.originalname));
     }
 });
 
-const upload = multer({ storage: storage });
+const fileFilter = (req, file, cb) => { //middleware para filtrar archivos que no sean .jpg
+    if (!file.originalname.match(/\.(jpg)$/)) {
+        return cb("Solo se permiten archivos .jpg");
+    }
+    cb(null, true);
+}
+
+
+const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 export default upload;

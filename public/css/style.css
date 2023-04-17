@@ -1,16 +1,103 @@
+/* Estilos para el body */
 body {
-    background-color: #fefffd;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #333;
-    margin: 0;
-    padding: 0;
-
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+main {
+  width: 100%;
+  text-align: center;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)
+}
 
+.menu a {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  width: 100%;
+}
+
+.menu a:hover {
+  background-color: #f5c045;
+  color: #fff;
+}
+
+/*cabecera*/
+h1 {
+  font-size: 3em;
+  text-align: center;
+}
+
+/* productos */
+article {
+  display: inline-table;
+  width: 300px;
+
+  margin: 1em;
+  box-shadow: 0px 0px 5px #999;
+}
+
+/* imagen del producto */
+article img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* nombre del producto */
+article h2 {
+  text-align: center;
+  margin: 0.5em;
+  font-size: 1.5em;
+}
+
+/* precio del producto */
+article p {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+
+/* botón "Ver detalles" */
+article a {
+  display: block;
+  text-align: center;
+  background-color: #f5c045;
+  color: white;
+  padding: 0.5em;
+  text-decoration: none;
+  margin-bottom: 1em;
+}
+
+/* botón "Subir un nuevo juego" */
+a[href="/productos/new"] {
+  display: block;
+  text-align: center;
+  background-color: #f5c045;
+  color: white;
+  padding: 0.5em;
+  text-decoration: none;
+  margin-top: 2em;
+}
+
+#portada{
+  width: 100%;
+}
+
+/* Estilos para el pie de página */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
 }
