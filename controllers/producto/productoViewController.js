@@ -111,7 +111,6 @@ const deletes = async (req, res) => {
     res.redirect("/productos");
 } 
 
-
 export default {
     getAll,
     getById,
