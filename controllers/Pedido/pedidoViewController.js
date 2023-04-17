@@ -2,7 +2,7 @@ import pedidoController from "./pedidoController.js";
 import { isAdmin } from "../../middlewares/auth.js";
 
 const getAll = async (req, res) => {
-    let result = await pedidoController.getAll();
+    let result = await pedidoController.getAll(req.user);
     /* if (isAdmin(req)) { //isAdmin(req) no funciona mirar middleware 
     let result = await pedidoController.getAll();
     } else {
@@ -50,10 +50,10 @@ const createPedido = async (req, res) => {
 const addProducto = async (req, res) => {
     let userEmail = req.user.email;
     let idproducto = req.params.productid;
-    let cantidad = req.query.cantidad;
+    let cantidad = req.query.cantidad ? req.query.cantidad : 1;
     let result = await pedidoController.addProducto(userEmail, idproducto, cantidad);
     if (result[0] == 0) {
-        res.redirect("/pedido");
+        res.redirect("/pedidos");
     } else {
         let error = result[1];
         res.status(500).send({
@@ -70,9 +70,7 @@ const pedidoView = async (req, res) => {
         res.render("pedido", {pedidos: result[1]});
     }else {
         let error = result[1]; 
-      res.status(500).send({
-        message: error.message || "Error al obtener los productos del pedido"
-      });
+      res.render ("pedido", {error: error.message || "Error al obtener los productos del pedido"});
     }
 };
 
@@ -82,4 +80,4 @@ export default {
     getById,
     addProducto,
     pedidoView
-};
+}; 

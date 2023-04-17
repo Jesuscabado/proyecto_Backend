@@ -1,19 +1,33 @@
-html 
- head 
+html
+ head
     title Mesa y Risa
     link(rel="stylesheet", href="/css/style.css")
- body 
-    header 
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")
+ body
+    header
       nav
         .menu
           a(href="/") Inicio
-          a(href="/productos") Juegos 
+          a(href="/productos") Juegos
           a(href="/login") Login
           a(href="/register") Registrarse
-          a(href="/logout") Logout 
+          a(href="/logout") Logout
           a(href="/users") Admin
           a(href="/pedidos") Pedidos
-    main 
-        block content 
-    footer   
-
+    main
+        block content
+  
+footer
+    div.footer-icons
+      a(href="#" target="_blank")
+        i.fab.fa-facebook-f
+      a(href="#" target="_blank")
+        i.fab.fa-twitter
+      a(href="#" target="_blank")
+        i.fab.fa-instagram
+      a(href="#" target="_blank")
+        i.fab.fa-youtube
+      a(href="#" target="_blank")
+        i.fab.fa-linkedin-in
+      a(href="#" target="_blank")
+        i.fab.fa-pinterest-p

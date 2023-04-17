@@ -45,4 +45,8 @@ router.post("/register", (req, res) => {
     userController.create(req,res);
 });
 
+router.post("/users/delete/:id", isAdmin, (req, res) => {
+    userController.deleteById(req,res);
+});
+
 export default router;

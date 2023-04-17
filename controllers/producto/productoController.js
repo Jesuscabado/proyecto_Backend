@@ -27,8 +27,7 @@ const create = async (data) => {
         let producto = await Producto.create(data);
         return [0, producto];
     } catch (error) {
-        throw new Error(error);
-        //return [1, error];
+      return [1, error];
     }
 };
 const update = async (data, idproducto) => {//

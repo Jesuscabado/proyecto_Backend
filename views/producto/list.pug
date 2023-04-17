@@ -5,7 +5,7 @@ block content
     h1 Juegos
     each producto in productos
         article
-            a(href=`/pedidos/new/${producto.idproducto}`)
+            a(href=`/pedidos/add/${producto.idproducto}`)
                 alt="carrito de la compra"
             a(href=`/productos/producto/${producto.idproducto}`)
                 img(src=`/uploads/${producto.nombre}.jpg`, alt=`${producto.nombre}`)

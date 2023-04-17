@@ -56,6 +56,15 @@ const update = async (req,res) => {
     }
 }
 
+const deleteById = async (req,res) => {
+    try {
+        await User.findByIdAndDelete(req.params.id);
+        res.redirect("/users");
+    } catch (error) {
+        res.status(404).json({message: error.message});
+    }
+}
+
 //Login
 const login = async (req,res) => {
     const email = req.body.email;
@@ -114,5 +123,6 @@ export default {
     login,
     loginForm,
     registerForm,
-    logout
+    logout,
+    deleteById
 }

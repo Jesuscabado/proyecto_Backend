@@ -96,8 +96,20 @@ a[href="/productos/new"] {
 
 /* Estilos para el pie de página */
 footer {
-  background-color: #333;
   color: #fff;
-  padding: 20px;
+  padding: 25px;
   text-align: center;
+  text-decoration: none;}/* Estilo para iconos del footer*/.footer-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}.footer-icons a {
+  margin-right: 15px;
+  font-size: 30px;
+  color: #555;
+  transition: color 0.3s ease-in-out;
+}.footer-icons a:hover {
+  color: #1DA1F2
+;
 }

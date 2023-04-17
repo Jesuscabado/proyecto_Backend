@@ -3,19 +3,25 @@ import Pedidos_has_productos from "../../models/pedidos_has_productos.js";
 import Productos from "../../models/producto.js";
 
 
-  const getAll = async () => {
+  const getAll = async (user) => {
     try {
-        const pedidos = await Pedido.findAll({
-            attributes: ["idpedido", "email_user","date","estado", ],
-            /* include: [
-                {model: Productos,
-                attributes: ["nombre", "precio"],
-                as: "productos"},
-                {model:Pedidos_has_productos,
-                attributes: ["cantidad"],
-                as: "pedidos_has_productos"}] */
-        });
-        return [0, pedidos];
+        if(user.role === "admin"){
+            const pedidos = await Pedido.findAll({
+                attributes: ["idpedido", "email_user","date","estado", ],
+            });
+            return [0, pedidos];
+        }
+        else{
+            const pedidos = await Pedido.findAll({
+                where: {
+                    email_user: user.email
+                },
+                attributes: ["idpedido", "email_user","date","estado", ],
+            });
+            return [0, pedidos];
+        }
+
+        
     } catch (error) {
         return [1, error];
     }
@@ -36,12 +42,12 @@ const getByUserEmail = async (email) => {
 
 const pendienteByUserEmail = async (email) => {
     try {
-        const pedido = await Pedido.findAll({
+        const pedido = await Pedido.findOne({
             where: {
                 email_user: email,
                 estado: "pendiente"
             },
-            attributes: ["idpedido", "email_user","date","estado", ],
+            attributes: ["idpedido", "email_user","date","estado" ],
         });
         return [0, pedido];
     } catch (error) {
@@ -51,11 +57,11 @@ const pendienteByUserEmail = async (email) => {
 
 const getById = async (id) => {
     try {
-        const pedido = await Pedido.findByPk(id,{
+        const pedido = await Pedido.findByPk(id,{ 
             attributes: ["idpedido", "email_user","date","estado", ],
             include: [
                 {model:Pedidos_has_productos,
-                attributes: ["cantidad", "idproducto"],
+                attributes: ["cantidad", "idproducto"], 
                 include: [
                     {model: Productos,
                     attributes: ["nombre", "precio"],}
@@ -67,7 +73,7 @@ const getById = async (id) => {
     } catch (error) {
         return [1, error];
     }
-}; 
+};  
 
 
     
@@ -97,8 +103,8 @@ const addProducto = async (email, idproducto, cantidad) => {
             pedido = await createPedido(email);
             pedido = pedido[1];
         }
-        console.log(pedido);
-        Pedidos_has_productos.create({
+        console.log("pedido " , pedido);
+        await Pedidos_has_productos.create({
             idpedido: pedido.idpedido,
             idproducto: idproducto,
             cantidad: cantidad
@@ -109,7 +115,7 @@ const addProducto = async (email, idproducto, cantidad) => {
     } catch (error) {
         return [1, error];
     }
-};
+}; 
   
 
 const updatePedido = async (data, idpedido) => {
