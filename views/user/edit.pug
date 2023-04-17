@@ -3,16 +3,16 @@ extends ../layout
 block content
     h1 Editar usuario 
     
-    form(action="/users/user/edit/" + user.id, method="POST")
+    form(action="/users/edit/" + user.id, method="POST") 
         label(for="name") Nombre 
-        input(type="text", name="name", id="name", value=user.username)
+        input(type="text", name="username", id="name", value=user.username)
         br
         br
         label(for="email") Email 
         input(type="email", name="email", id="email", value=user.email)
         br
         br
-        label(for="role") Rol
+        label(for="role") Rol 
         select(name="role", id="role")
             option(value="user") Usuario
             option(value="admin") Administrador 
