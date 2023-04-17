@@ -14,5 +14,13 @@ router.get("/:id", isAuthorized, (req, res) => {
     pedidoController.getById(req, res);
 });
 
+router.post("/", isAuthorized, (req, res) => {
+    pedidoController.createPedido(req, res);
+});
+
+/* router.get("/edit/:id", isAuthorized, (req, res) => {
+    pedidoController.editPedido(req, res);
+});
+ */
 export default router;
 
