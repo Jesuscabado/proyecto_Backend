@@ -22,5 +22,7 @@ router.post("/", isAuthorized, (req, res) => {
     pedidoController.editPedido(req, res);
 });
  */
-export default router;
 
+
+
+export default router;
