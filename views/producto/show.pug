@@ -6,7 +6,6 @@ block content
     h2=producto.descripcion
     h3= `${producto.precio}€`
     h4= (producto.stock) ? "En stock" : "Sin stock"
-    img(src=`/uploads/${producto.nombre}.jpg`, alt=`${producto.nombre}`)
     br
     br
     form(action=`/productos/edit/${producto.idproducto}`, method="get")
