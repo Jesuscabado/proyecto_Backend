@@ -103,19 +103,26 @@ const addProducto = async (email, idproducto, cantidad) => {
             pedido = await createPedido(email);
             pedido = pedido[1];
         }
-        console.log("pedido " , pedido);
-        await Pedidos_has_productos.create({
-            idpedido: pedido.idpedido,
-            idproducto: idproducto,
-            cantidad: cantidad
+        let productoExistente = await Pedidos_has_productos.findOne({
+            where: {
+                idpedido: pedido.idpedido,
+                idproducto: idproducto
+            }
         });
-    
-
-        return  [0, pedido];
+        if (productoExistente) {
+            productoExistente.cantidad += cantidad;
+            await productoExistente.save();
+        } else {
+            await Pedidos_has_productos.create({
+                idpedido: pedido.idpedido,
+                idproducto: idproducto,
+                cantidad: cantidad
+            });
+        }        return [0, pedido];
     } catch (error) {
         return [1, error];
     }
-}; 
+};
   
 
 const updatePedido = async (data, idpedido) => {

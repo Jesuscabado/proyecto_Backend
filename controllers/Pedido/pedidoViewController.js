@@ -3,11 +3,6 @@ import { isAdmin } from "../../middlewares/auth.js";
 
 const getAll = async (req, res) => {
     let result = await pedidoController.getAll(req.user);
-    /* if (isAdmin(req)) { //isAdmin(req) no funciona mirar middleware 
-    let result = await pedidoController.getAll();
-    } else {
-        let result = await pedidoController.getAllByUser(req.user.email);
-    } */
     if(result[0] == 0){
         res.render("pedido/list", {pedidos: result[1]});
     }else {
@@ -61,7 +56,20 @@ const addProducto = async (req, res) => {
         });
     }
 };
-    
+
+const deleteProducto = async (req, res) => {
+    let userEmail = req.user.email;
+    let idproducto = req.params.productid;
+    let result = await pedidoController.deleteProducto(userEmail, idproducto);
+    if (result[0] == 0) {
+        res.redirect("/pedidos");
+    } else {
+        let error = result[1];
+        res.status(500).send({
+            message: error.message || "Error al eliminar el producto del pedido"
+        });
+    }
+};
 
 
 const pedidoView = async (req, res) => {
@@ -79,5 +87,6 @@ export default {
     createPedido,
     getById,
     addProducto,
-    pedidoView
+    pedidoView,
+    deleteProducto
 }; 

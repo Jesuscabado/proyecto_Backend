@@ -6,7 +6,7 @@ block content
     each producto in productos
         article
             a(href=`/pedidos/add/${producto.idproducto}`)
-                alt="carrito de la compra"
+                alt="añadir al pedido"
             a(href=`/productos/producto/${producto.idproducto}`)
                 img(src=`/uploads/${producto.nombre}.jpg`, alt=`${producto.nombre}`)
             h2= producto.nombre
