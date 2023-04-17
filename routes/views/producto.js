@@ -17,7 +17,7 @@ router.get("/new", isAdmin, (req,res) => {
     productoController.createForm(req,res);     
 });
 
-router.post("/", isAdmin,(req,res)=> {
+router.post("/new", [isAdmin, upload.single("photo")], (req,res)=> {
     productoController.create(req,res);
 });
 

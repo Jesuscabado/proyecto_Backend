@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+    h2 Editar pedido
+
+    form(action=`/pedido/edit/${pedido.idpedido}` method="POST", enctype="multipart/form-data") 
+        label(for="date") Fecha 
+        input(type="text" name="date" id="date", value=pedido.date)
+        br
+        label(for="email_user") Email 
+        input(type="text" name="email_user" id="email_user",value=pedido.email_user)
+        br
+        label(for="estado") Estado 
+        input(type="text" name="estado" id="estado",value=pedido.estado)
+        br
+        label(for="total") Total
+        input(type="number" name="total" id="total",value=pedido.total)
+        br
+        input(type="submit", value="Guardar")
+    a(href="/pedido")
+        button Volver

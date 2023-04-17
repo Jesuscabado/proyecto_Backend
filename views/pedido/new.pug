@@ -1,0 +1,21 @@
+block content
+    link(rel="stylesheet", href="/css/style.css")
+    h2 Nuevo Pedido 
+    form(action="/pedidos" method="POST", enctype="multipart/form-data") 
+        label(for="idproducto") Producto 
+        select(name="idproducto" id="idproducto", required)
+            each producto in productos
+                option(value=`${producto.idproducto}`)= producto.nombre
+        br
+        label(for="cantidad") Cantidad 
+        input(type="number" name="cantidad" id="cantidad", required)
+        br
+        label(for="create_date") Fecha de pedido
+        input(type="date" name="create_date" id="create_date", required)
+        br
+        label(for="photo") Imagen
+        input(type="file" name="photo" id="photo")
+        br
+        br
+        input(type="submit", value="Crear")
+    a(href="/pedidos")
