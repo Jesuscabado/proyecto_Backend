@@ -10,7 +10,7 @@ router.get("/login", (req, res) => {
 });
 
 //Mostrar todos los usuarios
-router.get("/users", (req, res) => {
+router.get("/users", isAdmin,(req, res) => {
     userController.getAll(req,res);
 });
 
