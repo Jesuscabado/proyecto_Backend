@@ -4,11 +4,21 @@ import bcrypt from "bcrypt";
 const getAll = async (req,res) => {
     try{
         const users = await User.find();
-        res.status(200).json(users);
+        res.render("user/list", { users: users });
+  }  catch (error) {
+        res.status(404).json({message: error.message});
+    }
+}
+
+const getById = async (req,res) => {
+    try{
+        const user = await User.findById(req.params.id);
+        res.render("user/show", { user: user });
     } catch (error) {
         res.status(404).json({message: error.message});
     }
 }
+
 //Crear usuario
 const create = async (req,res) => {
     try{
@@ -23,6 +33,26 @@ const create = async (req,res) => {
         res.redirect("/login")
     } catch (error) {
         res.redirect("/register?error="+error.message);
+    }
+}
+//Función para actualizar los datos de Nombre, email, rol y contraseña de un usuario
+const update = async (req,res) => {
+    const {username, email, password, role} = req.body;
+    let hashedPassword = ""; //Si no se modifica la contraseña, no se modifica el hash
+    if (password != "") { //Si se modifica la contraseña, se modifica el hash
+        hashedPassword = await bcrypt.hash(password,10);
+    }
+    try {
+        let user = await User.findById(req.params.id);
+        user.username = username !== "" ? username : user.username; //Si el campo nombre no está vacío, se actualiza el nombre, si está vacío, se deja el nombre anterior
+        user.email = email !== "" ? email : user.email; 
+        user.password = password !== "" ? hashedPassword : user.password;
+        user.role = role !== "" ? role : user.role;
+
+        let updatedUser = await user.save(); 
+        res.redirect("/users");
+    } catch (error) {
+        res.status(404).json({message: error.message});
     }
 }
 
@@ -63,9 +93,24 @@ const registerForm = (req, res) => {
     res.render ("user/register", {error:error});
 }
 
+//Update Form
+const updateForm = async (req,res) => {
+    try{ 
+        const user = await User.findById(req.params.id);
+        res.render("user/edit", { user: user });
+    } catch (error) {
+        res.status(404).json({message: error.message});
+    }
+}
+
+
+
 export default { 
     getAll,
+    getById,
     create,
+    update,
+    updateForm,
     login,
     loginForm,
     registerForm,

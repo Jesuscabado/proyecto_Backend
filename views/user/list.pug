@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+    link(rel="stylesheet", href="/css/style.css")
+    h1 Usuarios
+    table 
+        thead 
+            th Nombre 
+            th Email 
+            th Rol 
+            th Acciones
+        tbody 
+            each user in users
+                tr 
+                    td
+                        a(href= `/users/${user.id}`)=user.username 
+                    td=user.email
+                    td=user.role
+                    td 
+                        form(action=`/users/edit/${user.id}`, method="get")
+                            input(type="submit", class="btn edit" value="Editar")
+                        form(action="`/users/delete/${user.id}`", method="post")
+                            input(type="submit", class="btn delete" value="Eliminar")

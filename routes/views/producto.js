@@ -14,7 +14,7 @@ router.get("/producto/:id",isAuthorized, (req, res) => {
 });
  
 router.get("/new", isAdmin, (req,res) => {
-    productoController.createForm(req,res);
+    productoController.createForm(req,res);     
 });
 
 router.post("/", isAdmin,(req,res)=> {
