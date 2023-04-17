@@ -6,7 +6,7 @@ const sequelize = new Sequelize('mitienda', 'root', 'mi-contraseña', {
     dialect: 'mysql',
     define: {
         timestamps: false
-    },
+    }
   });
   sequelize.authenticate()
   .then(function(err) {

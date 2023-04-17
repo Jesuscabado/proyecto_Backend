@@ -1,18 +1,28 @@
 import { Router } from "express";
-import { isAuthorized } from "../../middlewares/auth.js";
-import carritoController from "../../controllers/pedido/carritoController.js";
-
+import { isAuthorized,isAdmin } from "../../middlewares/auth.js";
+import pedidoController from "../../controllers/Pedido/pedidoViewController.js";
+import upload from "../../middlewares/multer.js";
 const router = Router();
 
-router.get("/", isAuthorized, (req, res) => {
-    carritoController.getAll(req, res);
+router.get("/", isAuthorized,isAdmin , (req, res) => {
+    pedidoController.getAll(req, res);
 });
 //ruta para agregar producto al carrito
-/* router.get("/add/:id", isAuthorized, (req, res) => {
-    carritoController.addProducto(req, res);
-}); */
-router.get ("/carrito",isAuthorized, (req, res) => {
-    carritoController.createPedido(req, res);
+
+
+router.get("/:id", isAuthorized, (req, res) => {
+    pedidoController.getById(req, res);
 });
+
+router.post("/", isAuthorized, (req, res) => {
+    pedidoController.createPedido(req, res);
+});
+
+/* router.get("/edit/:id", isAuthorized, (req, res) => {
+    pedidoController.editPedido(req, res);
+});
+ */
+
+
 
 export default router;

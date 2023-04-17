@@ -1,26 +1,18 @@
 extends ../layout
 
 block content
-
+    link(rel="stylesheet", href="/css/style.css")
     h1 Juegos
-    table 
-        thead 
-            th Imagen
-            th Nombre 
-            th Descripcion 
-            th precio 
-            th stock 
-        tbody 
-            each producto in productos
-                tr 
-                    td 
-                        img(src=`/uploads/${producto.nombre}.jpg`, alt=`${producto.nombre}`)
-                    td
-                        a(href= `/productos/producto/${producto.idproducto}`)=producto.nombre 
-                    td=producto.descripcion 
-                    td=producto.precio 
-                    td=producto.stock    
+    each producto in productos
+        article
+            a(href=`/pedidos/new/${producto.idproducto}`)
+                alt="carrito de la compra"
+            a(href=`/productos/producto/${producto.idproducto}`)
+                img(src=`/uploads/${producto.nombre}.jpg`, alt=`${producto.nombre}`)
+            h2= producto.nombre
+            p Precio: #{producto.precio}€
+            a(href=`/productos/producto/${producto.idproducto}`) Ver detalles
+
     br
     br
     a(href="/productos/new") Subir un nuevo juego
-

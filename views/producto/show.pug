@@ -2,6 +2,7 @@ extends ../layout
 block content 
     link(rel="stylesheet", href="/css/style.css")
     h1= producto.nombre
+    img(src=`/uploads/${producto.nombre}.jpg`, alt=`${producto.nombre}`)
     h2=producto.descripcion
     h3=producto.precio
     h4= (producto.stock) ? "En stock" : "Sin stock"
@@ -13,5 +14,3 @@ block content
     form(action=`/productos/delete/${producto.idproducto}`, method="post")
         input(type="submit",class="btn delete" value="Eliminar") 
         input(type="hidden", name="password" value="mi-contraseña")
-
-    a(href="/productos" class="btn") Volver
