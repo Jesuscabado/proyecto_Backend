@@ -35,6 +35,7 @@ main {
 h1 {
   font-size: 3em;
   text-align: center;
+  
 }
 
 /* productos */
@@ -110,6 +111,5 @@ footer {
   color: #555;
   transition: color 0.3s ease-in-out;
 }.footer-icons a:hover {
-  color: #1DA1F2
-;
+  color: #1DA1F2;
 }
