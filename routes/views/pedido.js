@@ -22,6 +22,10 @@ router.get("/add/:productid", isAuthorized, (req, res) => {
     pedidoController.addProducto(req, res);
 });
 
+router.get("/delete/:productid", isAuthorized, (req, res) => {
+    pedidoController.deleteProducto(req, res);
+});
+
 /* router.get("/edit/:id", isAuthorized, (req, res) => { 
     pedidoController.editPedido(req, res);
 });

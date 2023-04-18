@@ -20,3 +20,7 @@ block content
           td #{item.producto.nombre}
           td #{item.producto.precio}
           td #{item.cantidad}
+          //boton para eliminar producto del pedido
+          td 
+            form(action=`/pedidos/delete/${pedido.idpedido}/${item.idproducto}` method="POST")
+              input(type="submit", value="Eliminar")
