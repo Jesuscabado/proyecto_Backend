@@ -48,7 +48,7 @@ const addProducto = async (req, res) => {
     let cantidad = req.query.cantidad ? req.query.cantidad : 1;
     let result = await pedidoController.addProducto(userEmail, idproducto, cantidad);
     if (result[0] == 0) {
-        res.redirect("/pedidos");
+        res.redirect("/productos");
     } else {
         let error = result[1];
         res.status(500).send({
